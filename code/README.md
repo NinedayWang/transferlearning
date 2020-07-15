@@ -4,9 +4,11 @@
 
 > It is a waste of time looking for the codes from others. So I **collect** or **reimplement** them here in a way that you can **easily** use. The following are some of the popular transfer learning (domain adaptation) methods in recent years, and I know most of them will be chosen to **compare** with your own method.
 
-> It is still **on the go**. You are welcome to contribute and suggest other methods.
+> You are welcome to contribute and suggest other methods.
 
 This document contains codes from several aspects: **tutorial**, **theory**, **traditional** methods, and **deep** methods.
+
+Testing **dataset** can be found [here](https://github.com/jindongwang/transferlearning/blob/master/data/dataset.md).
 
 - - -
 
@@ -23,16 +25,24 @@ This document contains codes from several aspects: **tutorial**, **theory**, **t
 - **Google's Tensorflow Hub** (Tensorflow library released by Google for transfer learning)
 	- [Tensorflow](https://github.com/tensorflow/hub)
 
+## Deep feature extractor 提取深度网络特征用于传统方法
+
+[Deep feature extractor](https://github.com/jindongwang/transferlearning/blob/master/code/feature_extractor/readme.md)
+
 ## Basic distance 常用的距离度量
 
-- MMD and MK-MMD：[Matlab](https://github.com/lopezpaz/classifier_tests/tree/master/code/unit_test_mmd) | [Python](https://github.com/jindongwang/transferlearning/tree/master/code/distance/mmd.py)
+- MMD and MK-MMD：[Python](https://github.com/jindongwang/transferlearning/blob/master/code/distance/mmd_numpy_sklearn.py) | [Pytorch](https://github.com/jindongwang/transferlearning/blob/master/code/distance/mmd_pytorch.py) | [Matlab](https://github.com/jindongwang/transferlearning/blob/master/code/distance/mmd_matlab.m)
 - $A$-distance: [Python](https://github.com/jindongwang/transferlearning/tree/master/code/distance/proxy_a_distance.py)
-- CORAL loss: [Python](https://github.com/jindongwang/transferlearning/tree/master/code/distance/coral_loss.py)
+- CORAL loss: [Pytorch](https://github.com/jindongwang/transferlearning/tree/master/code/distance/coral_loss.py)
 - Several metric learning algorithms: [Python](https://github.com/metric-learn/metric-learn)
 - Wasserstein distance (earch mover's distance):
 	- Scipy built-in function: [scipy.stats.wasserstein_distance](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wasserstein_distance.html)
 	- OpenCV built-in function: `cv.CalcEMD2`
 	- Google's implementation: [Tensorflow](https://github.com/google/wasserstein-dist)
+
+## Useful tools 常用工具
+
+- Feature visualization using t-SNE (用t-SNE进行特征可视化)：[Python](https://github.com/jindongwang/transferlearning/tree/master/code/utils/feature_vis.py)
 
 ## Traditional transfer learning methods  非深度迁移
 
@@ -40,6 +50,8 @@ This document contains codes from several aspects: **tutorial**, **theory**, **t
 	- [Matlab](https://github.com/jindongwang/transferlearning/tree/master/code/traditional/SVM.m)
 - **TCA** (Transfer Component Anaysis, TNN-11) [1]
 	- [Matlab and Python](https://github.com/jindongwang/transferlearning/tree/master/code/traditional/TCA)
+- **KMM** (Kernel Mean Matching, NIPS-06) [67]
+    - [Python](https://github.com/jindongwang/transferlearning/tree/master/code/traditional/KMM.py)
 - **GFK** (Geodesic Flow Kernel, CVPR-12) [2]
 	- [Matlab and Python](https://github.com/jindongwang/transferlearning/blob/master/code/traditional/GFK)
 - **DA-NBNN** (Frustratingly Easy NBNN Domain Adaptation, ICCV-13) [39]
@@ -52,8 +64,6 @@ This document contains codes from several aspects: **tutorial**, **theory**, **t
 	- [Matlab and Python](https://github.com/jindongwang/transferlearning/blob/master/code/traditional/CORAL) | [Github](https://github.com/VisionLearningGroup/CORAL)
 - **JGSA** (Joint Geometrical and Statistical Alignment, CVPR-17) [6]
 	- [Matlab(official)](https://www.uow.edu.au/~jz960/codes/JGSA-r.rar) | [Matlab(easy)](https://github.com/jindongwang/transferlearning/blob/master/code/traditional/CORA/MyJGSA.m)
-- **ARTL** (Adaptation Regularization, TKDE-14) [7]
-	- [Matlab](https://github.com/jindongwang/transferlearning/tree/master/code/traditional/MyARTL)
 - **TrAdaBoost** (ICML-07)[8]
 	- [Python](https://github.com/chenchiwei/tradaboost)
 - **SA** (Subspace Alignment, ICCV-13) [11]
@@ -76,12 +86,19 @@ This document contains codes from several aspects: **tutorial**, **theory**, **t
 	- [Matlab](https://github.com/twanvl/rwa-da/tree/master/src)
 - **MEDA** (Manifold Embedded Distribution Alignment, ACM MM-18) [47]
 	- [Matlab(Official)](https://github.com/jindongwang/transferlearning/tree/master/code/traditional/MEDA)
+- **EasyTL** (Practically Easy Transfer Learning, ICME-19) [63]
+    - [Matlab(Official)](https://github.com/jindongwang/transferlearning/tree/master/code/traditional/EasyTL) | [Python](https://github.com/jindongwang/transferlearning/tree/master/code/traditional/pyEasyTL)
+
+- **SCA** (Scatter Component Analysis, TPAMI-17) [79]
+    - [Matlab](https://github.com/amber0309/SCA)
 
 
 ## Deep transfer learning methods  深度迁移
 
 - **DaNN** (Domain Adaptive Neural Network, PRICAI-14) [41]
 	- [PyTorch](https://github.com/jindongwang/transferlearning/tree/master/code/deep/DaNN)
+- **DDC** (Deep Domain Confusion, arXiv-14)
+    - [PyTorch](https://github.com/jindongwang/transferlearning/tree/master/code/deep/DDC_DeepCoral)
 - **DeepCORAL** (Deep CORAL: Correlation Alignment for Deep Domain Adaptation) [33]
 	- [PyTorch(recommend)](https://github.com/jindongwang/transferlearning/tree/master/code/deep/DeepCoral) | [PyTorch](https://github.com/SSARCandy/DeepCORAL) | [中文解读](https://ssarcandy.tw/2017/10/31/deep-coral/)
 - **DAN/JAN** (Deep Adaptation Network/Joint Adaptation Network, ICML-15,17) [9,10]
@@ -93,10 +110,11 @@ This document contains codes from several aspects: **tutorial**, **theory**, **t
 - **DANN/RevGrad** (Unsupervised Domain Adaptation by Backpropagation, ICML-15) [14]
 	- [Caffe(Official)](https://github.com/ddtm/caffe/tree/grl) | [PyTorch](https://github.com/jindongwang/transferlearning/tree/master/code/deep/DANN(RevGrad)) | [Pytorch(another)](https://github.com/jvanvugt/pytorch-domain-adaptation/blob/master/revgrad.py) | [Tensorflow(third party)](https://github.com/shucunt/domain_adaptation) 
 - **DANN** Domain-Adversarial Training of Neural Networks (JMLR-16)[17] 
-	- [Python(official)](https://github.com/GRAAL-Research/domain_adversarial_neural_network) | [Tensorflow](https://github.com/jindongwang/tf-dann)
+	- [Python(official)](https://github.com/GRAAL-Research/domain_adversarial_neural_network) | [Tensorflow](https://github.com/jindongwang/tf-dann) | [PyTorch](https://github.com/CuthbertCai/pytorch_DANN)
 - Associative Domain Adaptation (ICCV-17) [18]
 	- [Tensorflow](https://github.com/haeusser/learning_by_association)
 - Deep Hashing Network for Unsupervised Domain (CVPR-17) [20]
+
 	- [Matlab](https://github.com/hemanthdv/da-hash)
 - **CCSA** (Unified Deep Supervised Domain Adaptation and Generalization, ICCV-17) [23]
 	- [Python(Keras)](https://github.com/samotiian/CCSA)
@@ -149,7 +167,7 @@ This document contains codes from several aspects: **tutorial**, **theory**, **t
 - Multi-modal Cycle-consistent Generalized Zero-Shot Learning (ECCV-18) [54]
 	- [Tensorflow](https://github.com/rfelixmg/frwgan-eccv18)
 - **MSTN** (Moving Semantic Transfer Network, ICML-18) [55]
-	- [Tensorflow](https://github.com/Mid-Push/Moving-Semantic-Transfer-Network)
+	- [Tensorflow](https://github.com/Mid-Push/Moving-Semantic-Transfer-Network) | [Pytorch](https://github.com/EasonApolo/mstn)
 - **SAN** (Partial Transfer Learning With Selective Adversarial Networks, CVPR-18) [56]
 	- [Caffe, Pytorch](https://github.com/thuml/SAN)
 - **M-ADDA** (Metric-based Adversarial Discriminative Domain Adaptation, ICML-18 workshop) [57]
@@ -158,13 +176,60 @@ This document contains codes from several aspects: **tutorial**, **theory**, **t
     - [Pytorch](https://github.com/YU1ut/openset-DA)
 - **DIRT-T** (A DIRT-T Approach to Unsupervised Domain Adaptation, ICLR-18) [59]
     - [Tensorflow](https://github.com/RuiShu/dirt-t)
+- **CDAN** (Conditional Adversarial Domain Adaptation, NeurIPS-18) [60]
+	- [Pytorch(official)](https://github.com/thuml/CDAN) | [Pytorch(third party)](https://github.com/thuml/CDAN)
+- **CMD** (Central Moment Discrepancy, ICLR-17 and InfSc-19) [61], [62]
+    - [Keras(Theano)](https://github.com/wzell/cmd) | [Keras(Theano, journal extension)](https://github.com/wzell/mann)
+- **OPDA_BP** (Open Set Domain Adaptation by Back-propagation, ECCV-18) [64]
+    - [Pytorch(Official)](https://github.com/ksaito-ut/OPDA_BP)
+- **TCP** (Transfer Channel Prunning, IJCNN-19) [65]
+    - [Pytorch(Official)](https://github.com/jindongwang/transferlearning/tree/master/code/deep/TCP)
+- **MTAN** (Multi-Task Attention Network, CVPR-19) [66]
+    - [Python](https://github.com/lorenmt/mtan)
+- **L2T_ww** (Learning What and Where to Transfer, ICML-19) [68]
+    - [Pytorch](https://github.com/alinlab/L2T-ww)  
+- **SSDA_MME** (Semi-supervised Domain Adaptation via Minimax Entropy, ICCV-19) [71]
+    - [Pytorch](https://github.com/VisionLearningGroup/SSDA_MME)
+
+- **MRAN** (Multi-representation adaptation network for cross-domain image classification, Neural Networks 2019) [72]
+    - [Pytorch](https://github.com/jindongwang/transferlearning/tree/master/code/deep/MRAN)
+- **TA<sup>3</sup>N** (Temporal Attentive Alignment for Large-Scale Video Domain Adaptation, ICCV-19) [73]
+    - [Pytorch](https://github.com/cmhungsteve/TA3N)
+- **MDAN** (Multiple Source Domain Adaptation with Adversarial Learning, NeurIPS-18) [74]
+    - [Pytorch](https://github.com/KeiraZhao/MDAN)
+
+- Deep model transferribility from attribution maps (NeurIPS-19) [75]
+    - [Tensorflow](https://github.com/DeepDarkFantasy20/TransferbilityFromAttributionMaps)
+
+- **DIVA** (Domain Invariant Variational Autoencoders, arXiv-19) [76]
+    - [Pytorch](https://github.com/AMLab-Amsterdam/DIVA)
+
+- **CDCL** (Cross-Domain Complementary Learning with Synthetic Data for Multi-Person Part Segmentation, arXiv, ICCV-19 Demo) [77]
+    - [Tensorflow](https://github.com/kevinlin311tw/CDCL-human-part-segmentation)
+
+- **DTA** (Drop to Adapt: Learning Discriminative Features for Unsupervised Domain Adaptation, arXiv, ICCV-19) [78]
+    - [PyTorch](https://github.com/postBG/DTA.pytorch)
+
+- **DAAN** (Dynamic Adversarial Adaptation Network, ICDM 2019) [80]
+    - [Pytorch](https://github.com/jindongwang/transferlearning/tree/master/code/deep/DAAN)
+
+- **DAEL** (Domain Adaptive Ensemble Learning, ArXiv 2020) [81]
+    - [Pytorch](https://github.com/KaiyangZhou/Dassl.pytorch)
+
+- **DSAN** (Deep Subdomain Adaptation Network for Image Classification, DSAN 2020) [82]
+    - [Pytorch](https://github.com/jindongwang/transferlearning/tree/master/code/deep/DSAN)
+
+## Applications
+
+- Learning to select data for transfer learning with Bayesian Optimization (EMNLP-17) [69]
+	- [Python](https://github.com/sebastianruder/learn-to-select-data)
+
+- **SDG4DA** (Reinforced Training Data Selection for Domain Adaptation, ACL-19) [70]
+    - [Tensorflow](https://github.com/timerstime/SDG4DA)
+
 - - -
 
 #### [Code from HKUST](http://www.cse.ust.hk/TL/) [a bit old]
-
-- - -
-
-Testing **dataset** can be found [here](https://github.com/jindongwang/transferlearning/blob/master/doc/dataset.md).
 
 - - -
 
@@ -181,8 +246,6 @@ Testing **dataset** can be found [here](https://github.com/jindongwang/transferl
 [5] Sun B, Feng J, Saenko K. Return of Frustratingly Easy Domain Adaptation[C]//AAAI. 2016, 6(7): 8.
 
 [6] Zhang J, Li W, Ogunbona P. Joint Geometrical and Statistical Alignment for Visual Domain Adaptation[C]//CVPR 2017.
-
-[7] Long M, Wang J, Ding G, et al. Adaptation regularization: A general framework for transfer learning[J]//TKDE, 2014, 26(5): 1076-1089.
 
 [8] Dai W, Yang Q, Xue G R, et al. Boosting for transfer learning[C]//ICML, 2007: 193-200.
 
@@ -289,3 +352,47 @@ accepted in International Conference on Computer Vision (ICCV 2015), Santiago, C
 [58] Saito K, Yamamoto S, Ushiku Y, et al. Open Set Domain Adaptation by Backpropagation[J]. arXiv preprint arXiv:1804.10427, 2018.
 
 [59] Shu R, Bui H H, Narui H, et al. A DIRT-T Approach to Unsupervised Domain Adaptation[J]. arXiv preprint arXiv:1802.08735, 2018.
+
+[60] Mingsheng Long, et al. Conditional Adversarial Domain Adaptation. NeurIPS 2018.
+
+[61] W.Zellinger, T. Grubinger, E. Lughofer, T. Natschlaeger, and Susanne Saminger-Platz, "Central moment discrepancy (cmd) for domain-invariant representation learning," ICLR 2017.
+
+[62] W. Zellinger, B.A. Moser, T. Grubinger, E. Lughofer, T. Natschlaeger, and S. Saminger-Platz, "Robust unsupervised domain adaptation for neural networks via moment alignment," Information Sciences (in press), 2019, https://doi.org/10.1016/j.ins.2019.01.025, arXiv preprint arxiv:1711.06114
+
+[63] Jindong Wang, Yiqiang Chen, Han Yu, Meiyu Huang, Qiang Yang. Easy Transfer Learning By Exploiting Intra-domain Structures. IEEE International Conference on Multimedia & Expo (ICME) 2019.
+
+[64] Saito K, Yamamoto S, Ushiku Y, et al. Open set domain adaptation by backpropagation[C]//Proceedings of the European Conference on Computer Vision (ECCV). 2018: 153-168.
+
+[65] Chaohui Yu, Jindong Wang, Yiqiang Chen, Zijing Wu. Accelerating Deep Unsupervised Domain Adaptation with Transfer Channel Pruning. IJCNN 2019.
+
+[66] Shikun Liu, Edward Johns, and Andrew Davison. End-to-End Multi-Task Learning with Attention. CVPR 2019.
+
+[67] Huang J, Gretton A, Borgwardt K, et al. Correcting sample selection bias by unlabeled data[C]//Advances in neural information processing systems. 2007: 601-608.
+
+[68] Yunhun Jang, Hankook Lee, Sung Ju Hwang, Jinwoo Shin. Learning what and where to transfer. ICML 2019.
+
+[69] Sebastian Ruder, Barbara Plank (2017). Learning to select data for transfer learning with Bayesian Optimization. In Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing, Copenhagen, Denmark.
+
+[70] Liu M, Song Y, Zou H, et al. Reinforced Training Data Selection for Domain Adaptation[C]//Proceedings of the 57th Conference of the Association for Computational Linguistics. 2019: 1957-1968.
+
+[71] Saito K, Kim D, Sclaroff S, et al. Semi-supervised Domain Adaptation via Minimax Entropy. ICCV 2019.
+
+[72] Zhu Y, Zhuang F, Wang J, et al. Multi-representation adaptation network for cross-domain image classification[J]. Neural Networks, 2019.
+
+[73] Min-Hung Chen, Zsolt Kira, Ghassan AlRegib, et al. Temporal Attentive Alignment for Large-Scale Video Domain Adaptation. ICCV 2019.
+
+[74] Zhao H, Zhang S, Wu G, et al. Multiple source domain adaptation with adversarial learning. NeurIPS 2018.
+
+[75] Jie Song, et al. Deep model transferrability from attirbution maps. NeurIPS 2019.
+
+[76] Ilse, M., Tomczak, J. M., C. Louizos & Welling, M. (2018). DIVA: Domain Invariant Variational Autoencoders. arXiv preprint arXiv:1905.10427
+
+[77] Lin K., et al. Cross-Domain Complementary Learning with Synthetic Data for Multi-Person Part Segmentation[J]. arXiv preprint arXiv:1907.05193, ICCV demo, 2019.
+
+[78] Lee S., Kim D., et al. Drop to Adapt: Learning Discriminative Features for Unsupervised Domain Adaptation. ICCV 2019.
+
+[79] Ghifary M, Balduzzi D, Kleijn W B, et al. Scatter component analysis: A unified framework for domain adaptation and domain generalization[J]. IEEE transactions on pattern analysis and machine intelligence, 2016, 39(7): 1414-1430.
+
+[80] Chaohui Yu, Jindong Wang, Yiqiang Chen, Meihu Huang. Transfer learnign with dynamic adversarial adaptation network. ICDM 2019.
+
+[81] Kaiyang Zhou, Yongxin Yang, Yu Qiao, Tao Xiang. Domain Adaptive Ensemble Learning. ArXiv preprint, 2020.
